@@ -3,8 +3,8 @@
 ## 1. Clone this repo
 
 ```bash
-https://github.com/coherentsolutionstrainingcenter/05-claude-code-plugin-marketplace-AntonVlasik.git
-cd 05-claude-code-plugin-marketplace-AntonVlasik
+https://github.com/AV29/claude.git
+cd claude
 ```
 
 ## 2. Add the marketplace to Claude Code
