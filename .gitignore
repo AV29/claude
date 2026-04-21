@@ -1,0 +1,66 @@
+# ============================================================
+# CRITICAL: This .gitignore explicitly ALLOWS plugin dotfolders
+# Do NOT change these lines unless you understand plugin layout
+# ============================================================
+
+# Plugin architecture requires these to be committed:
+!.claude-plugin/
+!.claude-plugin/**
+!.mcp.json
+
+# ============================================================
+# Standard ignores
+# ============================================================
+
+# Local overrides (never commit)
+CLAUDE.local.md
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+vendor/
+target/
+bin/
+obj/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+dist/
+out/
+*.log
+*.pid
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+
+# .NET
+bin/
+obj/
+*.user
+
+# Java
+*.class
+.gradle/
+
+# iOS
+*.xcuserstate
+DerivedData/
+*.xcworkspace/xcuserdata/
+
+# Android
+local.properties
+.gradle/

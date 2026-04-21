@@ -1,0 +1,40 @@
+{
+  "name": "Vlasik dev hub",
+  "owner": {
+    "name": "Anton Vlasik",
+    "email": "snumber29@gmail.com"
+  },
+  "metadata": {
+    "description": "A marketplace for plugins used across various projects in web development",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "documentation",
+      "source": "./plugins/documentation",
+      "description": "Fetches up-to-date documentation for any library, framework, or technology using Context7 MCP and web fallback.",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "keywords": ["docs", "documentation", "context7", "library", "lookup"],
+      "author": { "name": "Anton Vlasik" }
+    },
+    {
+      "name": "web-dev",
+      "source": "./plugins/web-dev",
+      "description": "Best practices for building modern React + TypeScript web applications.",
+      "version": "1.0.0",
+      "category": "web-development",
+      "keywords": ["react", "typescript", "testing", "accessibility", "security", "web"],
+      "author": { "name": "Anton Vlasik" }
+    },
+    {
+      "name": "ambient",
+      "source": "./plugins/ambient",
+      "description": "Sensory feedback and lightweight commit guidance to keep you aware of Claude's activity without watching the screen.",
+      "version": "1.0.0",
+      "category": "developer-experience",
+      "keywords": ["notifications", "sounds", "hooks", "macos", "commits"],
+      "author": { "name": "Anton Vlasik" }
+    }
+  ]
+}

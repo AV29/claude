@@ -1,0 +1,11 @@
+{
+  "name": "ambient",
+  "version": "1.0.0",
+  "description": "Sensory feedback and lightweight commit guidance to keep you aware of Claude's activity without watching the screen.",
+  "author": {
+    "name": "Anton Vlasik",
+    "email": "snumber29@gmail.com"
+  },
+  "keywords": ["notifications", "sounds", "hooks", "macos", "commits", "developer-experience"],
+  "license": "MIT"
+}

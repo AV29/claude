@@ -1,0 +1,11 @@
+{
+  "name": "documentation",
+  "version": "1.0.0",
+  "description": "Plugin aimed to help with exploring documentation of various open source libraries",
+  "author": {
+    "name": "Anton Vlasik",
+    "email": "snumber29@gmail.com"
+  },
+  "keywords": ["docs", "documentation", "context7", "library", "lookup"],
+  "license": "MIT"
+}

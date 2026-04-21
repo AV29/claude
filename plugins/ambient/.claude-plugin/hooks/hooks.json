@@ -1,0 +1,48 @@
+{
+  "Stop": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "afplay /System/Library/Sounds/Blow.aiff 2>/dev/null || true && osascript -e 'display notification \"Claude finished\" with title \"Claude Code\"' 2>/dev/null || true",
+          "async": true
+        }
+      ]
+    }
+  ],
+  "Notification": [
+    {
+      "hooks": [
+        {
+          "type": "command",
+          "command": "afplay /System/Library/Sounds/Frog.aiff 2>/dev/null || true",
+          "async": true
+        }
+      ]
+    }
+  ],
+  "PreToolUse": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -qiE '(rm -rf|git reset --hard|git push --force|git push -f|drop table|truncate )' && afplay /System/Library/Sounds/Sosumi.aiff 2>/dev/null || true",
+          "async": true
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "echo \"$CLAUDE_TOOL_INPUT\" | grep -q 'git commit' && afplay /System/Library/Sounds/Glass.aiff 2>/dev/null || true",
+          "async": true
+        }
+      ]
+    }
+  ]
+}

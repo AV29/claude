@@ -1,0 +1,11 @@
+{
+  "name": "web-dev",
+  "version": "1.0.0",
+  "description": "Best practices for building modern React + TypeScript web applications.",
+  "author": {
+    "name": "Anton Vlasik",
+    "email": "snumber29@gmail.com"
+  },
+  "keywords": ["react", "typescript", "testing", "accessibility", "security", "web"],
+  "license": "MIT"
+}
