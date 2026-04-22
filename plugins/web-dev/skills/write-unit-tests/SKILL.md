@@ -19,7 +19,7 @@ Write unit tests for the file at `$ARGUMENTS`. Read the target file first, then 
 ### Imports
 
 ```ts
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 ```
 
 - Prefer `userEvent` over `fireEvent` for interactions that trigger multiple events (click, type)
@@ -34,34 +34,18 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 
 ### Mocking
 
-Mock at the module boundary, not inside components:
-
-```ts
-vi.mock('@/api/users/hooks', () => ({
-  useGetUsers: vi.fn(),
-}));
-```
-
-Restore or reset mocks in `beforeEach` to avoid test bleed:
-
-```ts
-beforeEach(() => {
-  vi.mocked(useGetUsers).mockReturnValue({ data: [], isPending: false });
-});
-```
-
 For mocking hooks let's use spyOn helpers that should be put in a utility folder `utils/tests/spyOnUseSomething.ts` for future reusability by other tests:
 
 ```ts
-import * as useSomething from 'hooks/api/something';
+import * as useSomething from "hooks/api/something";
 
-const spyOnUseAssets = ({
+const spyOnSomething = ({
   data = { assets: [] } as SomethingResponse | undefined,
   isLoading = false,
   error = null,
   isSuccess = true,
 } = {}) => {
-  vi.spyOn(useSomething, 'default').mockReturnValue({
+  vi.spyOn(useSomething, "default").mockReturnValue({
     data,
     isLoading,
     error,
@@ -69,7 +53,7 @@ const spyOnUseAssets = ({
   });
 };
 
-export default spyOnUseAssets;
+export default spyOnSomething;
 ```
 
 For router-dependent components wrap with `BrowserRouter` or a helper, that lives inside test-utils:
@@ -87,7 +71,7 @@ const renderWithQuery = (ui: React.ReactElement) => {
     defaultOptions: { queries: { retry: false } },
   });
   return render(
-    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>
+    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>,
   );
 };
 ```
