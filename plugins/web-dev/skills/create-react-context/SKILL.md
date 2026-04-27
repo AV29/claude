@@ -12,8 +12,9 @@ Parse `$ARGUMENTS` as: first word = context name (without "Context" suffix, e.g.
 
 All files go in `src/context/<ContextNameContext>`.
 
-- `ContextNameContext.tsx` — type, context, provider
-- `ContextNameContext.test.tsx` - unit tests
+- `ContextNameProvider.tsx` — provider
+- `ContextNameContext.tsx` — type, context
+- `ContextNameProvider.test.tsx` - unit tests
 - `useContextName.ts` — hook with out-of-scope guard
 - `index.ts` — barrel export
 
@@ -21,10 +22,8 @@ All files go in `src/context/<ContextNameContext>`.
 
 ### `src/context/<ContextNameContext>/ContextNameContext.tsx`
 
-**Children-based provider (default):**
-
 ```tsx
-import { createContext, ReactNode } from "react";
+import { createContext } from "react";
 
 export interface ContextNameContextType {
   // add context value shape here
@@ -33,6 +32,18 @@ export interface ContextNameContextType {
 export const ContextNameContext = createContext<
   ContextNameContextType | undefined
 >(undefined);
+```
+
+### `src/context/<ContextNameContext>/ContextNameProvider.tsx`
+
+**Children-based provider (default):**
+
+```tsx
+import { ReactNode } from "react";
+import {
+  ContextNameContext,
+  ContextNameContextType,
+} from "./ContextNameContext";
 
 interface ContextNameProviderProps {
   children: ReactNode;
@@ -54,16 +65,11 @@ export const ContextNameProvider = ({ children }: ContextNameProviderProps) => {
 **Route-based provider (when `route-based` is passed):**
 
 ```tsx
-import { createContext } from "react";
 import { Outlet } from "react-router";
-
-export interface ContextNameContextType {
-  // add context value shape here
-}
-
-export const ContextNameContext = createContext<
-  ContextNameContextType | undefined
->(undefined);
+import {
+  ContextNameContext,
+  ContextNameContextType,
+} from "./ContextNameContext";
 
 export const ContextNameProvider = () => {
   const value: ContextNameContextType = {
@@ -72,7 +78,7 @@ export const ContextNameProvider = () => {
 
   return (
     <ContextNameContext.Provider value={value}>
-      <Outlet />
+      {children}
     </ContextNameContext.Provider>
   );
 };
