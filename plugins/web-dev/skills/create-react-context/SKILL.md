@@ -13,6 +13,7 @@ Parse `$ARGUMENTS` as: first word = context name (without "Context" suffix, e.g.
 All files go in `src/context/<ContextNameContext>`.
 
 - `ContextNameContext.tsx` — type, context, provider
+- `ContextNameContext.test.tsx` - unit tests
 - `useContextName.ts` — hook with out-of-scope guard
 - `index.ts` — barrel export
 
@@ -23,7 +24,7 @@ All files go in `src/context/<ContextNameContext>`.
 **Children-based provider (default):**
 
 ```tsx
-import { createContext, ReactNode } from 'react';
+import { createContext, ReactNode } from "react";
 
 export interface ContextNameContextType {
   // add context value shape here
@@ -53,8 +54,8 @@ export const ContextNameProvider = ({ children }: ContextNameProviderProps) => {
 **Route-based provider (when `route-based` is passed):**
 
 ```tsx
-import { createContext } from 'react';
-import { Outlet } from 'react-router';
+import { createContext } from "react";
+import { Outlet } from "react-router";
 
 export interface ContextNameContextType {
   // add context value shape here
@@ -77,20 +78,43 @@ export const ContextNameProvider = () => {
 };
 ```
 
+### `src/context/<ContextNameContext>/ContextNameContext.test.tsx`
+
+```tsx
+...
+
+const wrapper = ({ children }: { children: React.ReactNode }) => (
+  <ThemeProvider>{children}</ThemeProvider>
+);
+
+describe('ThemeProvider', () => {
+  it('renders children', () => {
+    render(
+      <ThemeProvider>
+        <span>child content</span>
+      </ThemeProvider>
+    );
+    expect(screen.getByText('child content')).toBeInTheDocument();
+  });
+});
+
+...
+```
+
 ### `src/context/<ContextNameContext>/useContextName.ts`
 
 ```ts
-import { useContext } from 'react';
+import { useContext } from "react";
 import {
   ContextNameContext,
   ContextNameContextType,
-} from './ContextNameContext';
+} from "./ContextNameContext";
 
 export const useContextName = (): ContextNameContextType => {
   const context = useContext(ContextNameContext);
 
   if (context === undefined) {
-    throw new Error('useContextName must be used within ContextNameProvider');
+    throw new Error("useContextName must be used within ContextNameProvider");
   }
 
   return context;
@@ -106,8 +130,8 @@ export {
   ContextNameContext,
   ContextNameProvider,
   type ContextNameContextType,
-} from './ContextNameContext';
-export { useContextName } from './useContextName';
+} from "./ContextNameContext";
+export { useContextName } from "./useContextName";
 ```
 
 ## Rules
