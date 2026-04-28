@@ -1,6 +1,6 @@
 ---
-name: create-component
-description: Create a folder with a new React component following project conventions with necessary supporting files. Usage: /create-component ComponentName [path]
+name: create-react-component
+description: Create a new React component following project conventions with necessary supporting files. Usage: /create-react-component ComponentName [path]
 argument-hint: ComponentName [src/components]
 ---
 
@@ -15,8 +15,8 @@ Parse `$ARGUMENTS` as: first word = component name, optional second word = desti
 ### `<path>/<ComponentName>/ComponentName.tsx`
 
 ```tsx
-import { Box } from '@mui/material';
-import styles from './ComponentName.styles';
+import { Box } from "@mui/material";
+import styles from "./ComponentName.styles";
 
 interface ComponentNameProps {}
 
@@ -40,17 +40,17 @@ export default styles;
 ### `<path>/<ComponentName>/index.ts`
 
 ```ts
-export { default } from './ComponentName';
+export { default } from "./ComponentName";
 ```
 
 ### `<path>/<ComponentName>/ComponentName.test.tsx`
 
 ```tsx
-import { render, screen } from '@testing-library/react';
-import ComponentName from './ComponentName';
+import { render, screen } from "@testing-library/react";
+import ComponentName from "./ComponentName";
 
-describe('ComponentName', () => {
-  it('renders without crashing', () => {
+describe("ComponentName", () => {
+  it("renders without crashing", () => {
     render(<ComponentName />);
     // assert visible content, e.g.:
     // expect(screen.getByText('...')).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe('ComponentName', () => {
 - Put blank lines between each style property in the `styles` object for readability
 - Imports: use `@/` alias except within the same folder
 - Boolean props/state: prefix with `is`, `has`, `can`, `should`
-- If it's a page, destination is `src/pages/` and also *(adapt paths to your project's router setup)*:
+- If it's a page, destination is `src/pages/` and also _(adapt paths to your project's router setup)_:
   - Add the path constant to the router paths enum
   - Register the route in the app's route config
   - Wrap with an auth guard if the route requires authentication

@@ -6,7 +6,7 @@ The three plugins operate at different layers of the development experience and 
 
 `documentation` is a universal utility: any project in any language benefits from fast library lookups. `web-dev` is project-type specific: its rules only make sense on a React/TypeScript frontend — installing it on a backend service would be noise. `ambient` is developer-preference specific: sound feedback and commit conventions are personal workflow choices, independent of the tech stack.
 
-One giant plugin would force a backend developer to install MUI component conventions. Ten small plugins would fragment tightly related rules — splitting `create-component` from `write-unit-tests` or `clean-typescript` would mean partial installs that leave gaps. The three-plugin split maps naturally to: "what you're looking up", "what project you're on", and "how you like to work".
+One giant plugin would force a backend developer to install MUI component conventions. Ten small plugins would fragment tightly related rules — splitting `create-react-component` from `write-unit-tests` or `clean-typescript` would mean partial installs that leave gaps. The three-plugin split maps naturally to: "what you're looking up", "what project you're on", and "how you like to work".
 
 ## Why these components in each plugin?
 

@@ -3,7 +3,7 @@ name: modern-best-practice-react-components
 description: Build clean, modern React components that apply common best practices and avoid common pitfalls like unnecessary state management or useEffect usage
 ---
 
-Write and edit React components following these rules. For scaffolding a new component use `/create-component`.
+Write and edit React components following these rules. For scaffolding a new component use `/create-react-component`.
 
 ## Component Structure
 
@@ -62,7 +62,7 @@ const handleNavigate = () => navigate({ to: Path.Groups });
 ```tsx
 // ❌ raw useTheme + useMediaQuery duplicated across components
 const theme = useTheme();
-const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
 // ✅ use a shared breakpoint hook
 const { isMobile } = useBreakpoints();
