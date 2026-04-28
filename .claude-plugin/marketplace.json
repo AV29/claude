@@ -22,7 +22,7 @@
       "name": "web-dev",
       "source": "./plugins/web-dev",
       "description": "Best practices for building modern React + TypeScript web applications.",
-      "version": "2.1.0",
+      "version": "2.2.0",
       "category": "web-development",
       "keywords": ["react", "typescript", "testing", "accessibility", "security", "web"],
       "author": { "name": "Anton Vlasik" }
