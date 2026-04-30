@@ -9,15 +9,34 @@ Names should communicate **intent and domain**, not implementation details or re
 
 ## Casing at a glance
 
-| Thing | Convention | Example |
-|---|---|---|
-| Variables & local constants | `camelCase` | `expenseTotal`, `currentUser` |
-| Magic numbers, strings, maps, config | `SCREAMING_SNAKE_CASE` | `MAX_RETRY_COUNT`, `API_BASE_URL` |
-| Enums | `PascalCase` (singular) | `PaymentStatus`, `UserRole` |
-| Components | `PascalCase` | `ExpenseList`, `PaymentForm` |
-| Hooks | `camelCase` with `use` prefix | `useExpenses`, `useAuthState` |
-| Props types | `PascalCase` `ComponentNameProps` | `ExpenseListProps` |
-| Test IDs & JSX wrapper IDs | `kebab-case` | `expense-list`, `submit-button` |
+| Thing                                | Convention                        | Example                           |
+| ------------------------------------ | --------------------------------- | --------------------------------- |
+| Variables & local constants          | `camelCase`                       | `expenseTotal`, `currentUser`     |
+| Magic numbers, strings, maps, config | `SCREAMING_SNAKE_CASE`            | `MAX_RETRY_COUNT`, `API_BASE_URL` |
+| Enums                                | `PascalCase` (singular)           | `PaymentStatus`, `UserRole`       |
+| Components                           | `PascalCase`                      | `ExpenseList`, `PaymentForm`      |
+| Hooks                                | `camelCase` with `use` prefix     | `useExpenses`, `useAuthState`     |
+| Props types                          | `PascalCase` `ComponentNameProps` | `ExpenseListProps`                |
+| Test IDs & JSX wrapper IDs           | `kebab-case`                      | `expense-list`, `submit-button`   |
+
+## Name Length
+
+**Never use abbreviated or single-character names.** Names must be descriptive and self-documenting. The only exception is `i` as a loop index in `for` loops.
+
+```ts
+// ✅
+const userCount = users.length;
+const handleClick = (event: MouseEvent) => { ... };
+for (let i = 0; i < items.length; i++) { ... }
+users.map(user => ({ name: user.name }))
+
+// ❌
+const n = users.length;
+const fn = (e: MouseEvent) => { ... };
+const cb = () => { ... };
+const btn = document.querySelector('button');
+users.map(u => ({ name: u.name }))
+```
 
 ## Booleans
 
@@ -40,11 +59,11 @@ isNotLoading, noError, disabled (use isDisabled), notReady
 
 ```ts
 // ✅
-getExpenses(), makePayload(), generateId()
-hasPermission(), canEdit(), isAuthenticated()
+(getExpenses(), makePayload(), generateId());
+(hasPermission(), canEdit(), isAuthenticated());
 
 // ❌
-expenses(), expensesFetcher(), data()
+(expenses(), expensesFetcher(), data());
 ```
 
 ## Variables & Constants
@@ -86,10 +105,10 @@ enum PAYMENT_STATUS { ... }    // screaming case
 
 ```ts
 // ✅
-useExpenses(), useAuthState(), useBreakpoints()
+(useExpenses(), useAuthState(), useBreakpoints());
 
 // ❌
-useFetchExpensesFromApi(), useExpenseHook(), useExpenseQuery()
+(useFetchExpensesFromApi(), useExpenseHook(), useExpenseQuery());
 ```
 
 ## Event Handlers
@@ -100,10 +119,11 @@ useFetchExpensesFromApi(), useExpenseHook(), useExpenseQuery()
 ```tsx
 // ✅
 <ExpenseRow onSelect={handleSelect} onDelete={handleDelete} />
-const handleSelect = (id: string) => { ... };
+const handleSelect = (event: MouseEvent, id: string) => { ... };
 
 // ❌
 <ExpenseRow selectExpense={onSelectExpense} />
+const handleSelect = (e: MouseEvent, id: string) => { ... };  // 'e' is too short
 ```
 
 ## Arrays & Collections
@@ -126,10 +146,10 @@ expenseList, expenseArray, idMap (use expenseById instead)
 
 ```tsx
 // ✅
-ExpenseList, UserCard, PaymentForm
+(ExpenseList, UserCard, PaymentForm);
 
 // ❌
-ExpensePillList, UserAvatarCard, PaymentModalForm
+(ExpensePillList, UserAvatarCard, PaymentModalForm);
 ```
 
 ## Props Types
